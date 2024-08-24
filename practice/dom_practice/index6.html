@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document 6</title>
+</head>
+<body>
+    <p>Learning querySelectors </p>
+    <div>Div one</div>
+    <p class="intro">Para one</p>
+    <div>Div two</div>
+    <p class="intro">Para two</p>
+    <div>Yet another div</div>
+
+    <div id="myDiv" style="border: 1px solid black; padding: 8px;">
+        <h2 class="example">A heading</h2>
+        <p class="example">A paragraph</p>
+        <p class="example">A paragraph</p>
+    </div>
+
+    <p id="demo"></p>
+    <script>
+        const paragraphs = document.querySelectorAll('p.intro');
+        paragraphs.forEach(paragraph => paragraph.style.backgroundColor = 'red');
+
+        const element = document.getElementById("myDiv");
+        const list = element.querySelectorAll('.example');
+        document.getElementById("demo").innerHTML = list.length;
+    </script>
+</body>
+</html>

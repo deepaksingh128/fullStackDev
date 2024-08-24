@@ -1,0 +1,79 @@
+<!--
+    Assignment:-
+    Better way to do the previous thing :-
+    In this case we are not going to clear ,
+    instead we store old dom(state) somewhere and 
+    then calculate the diff between the new dom(state) 
+    and then we will update the things. 
+    The functions below are implemented by react under the hood.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        let globalId = 1;
+        let todoState = [];
+        let oldTodoState = [];
+
+        // done by frontend developer:- (REACT DOM or REACT NATIVE(if mobile app))
+        function addTodo() {
+            // big function we wrote in the beginning
+
+        }
+
+        // done by frontend developer:- (REACT DOM OR REACT NATIVE(if mobile app))
+        function removeTodo() {
+            const element = document.getElementById(todo.id);
+            element.parent.removeChild(element);
+        }
+
+        // done by frontend developer:-  (REACT DOM or REACT NATIVE(if mobile app))
+        function updateTodo(oldTodo, newTodo) {
+            const element = document.getElementById(oldTodo.id);
+            element.children[0].innerHTML = newTodo.title;
+            element.children[1].innerHTML = newTodo.description;
+            element.children[0].innerHTML = newTodo.completed ? "Mark as done" : "Done";
+        }
+
+        // (REACT) This is the crucks of the REACT :- i.e. calculating
+        // diff and find out things
+        function updateState(newTodos) {
+            // calculate difference between newTodos and oldTodos
+            // More specifically, find out what todos are -
+            // 1. added
+            // 2. deleted
+            // 3. updated
+            const added = [];
+            const deleted = [];
+            const updated = [];
+            // calculate these 3 arrays
+            // call one of these 3 functions:- addTodo or removeTodo or updateTodo functions on each of the elements
+            oldTodoState = newTodos;
+        }
+
+        // done by frontend developer:-
+        function addTodo() {
+            const title = document.getElementById("title".value);
+            const description = document.getElementById("description").value;
+            todoState.push({
+                title: title,
+                description: description,
+                id: globalId++,
+            });
+            updateState(todoState);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" placeholder="Todo title"></input> <br /><br />
+    <input></input type="text" placeholder="Todo description"> <br /><br />
+    <button onclick="addTodo()">Add todo</button>
+    <br /><br />
+
+    <div id="todos">
+        
+    </div>
+    
+</body>
+</html>

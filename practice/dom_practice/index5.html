@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document 5</title>
+</head>
+<body>
+    <p>Demonstrating getElementsByClassName method</p>
+    <p class="para">This is para one.</p>
+    <p class="para">This is para two.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        const x = document.getElementsByClassName("para");
+        document.getElementById("demo").innerHTML = 'The first paragraph (index) with class="intro" is : ' + x[0].innerHTML ;
+    </script>
+</body>
+</html>

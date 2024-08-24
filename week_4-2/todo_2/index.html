@@ -1,0 +1,79 @@
+<!--
+    Given a state , create whatever you need on the screen
+    And you know this state becomes very important when we move to react.
+    When we have real backend and it is returning data , then 
+    the function updateAccToState() will become more useful.
+    All this thing can be done using react in more easier way.
+-->
+
+<html>
+    <body>
+        <div>
+            <input id="title" type="text" placeholder="title"> </input>
+            <br> </br>
+            <input id="description" type="text" placeholder="description"> </input>
+            <br> </br>
+            <div id="container"></div>
+
+        </div>
+
+        <script>
+            let globalId = 1;
+    
+            function markAsDone(todoId) {
+                const parent = document.getElementById(todoId);
+                parent.children[2].innerHTML = "Done!";
+            }
+    
+            function createChild(title, description, id) {
+                const child = document.createElement("div");
+                const firstGrandParent = document.createElement("div");
+                firstGrandParent.innerHTML = title;
+                const secondGrandParent = document.createElement("div");
+                secondGrandParent.innerHTML = description;
+                const thirdGrandParent = document.createElement("button");
+                thirdGrandParent.innerHTML = "Mark as done";
+                thirdGrandParent.setAttribute("onclick", `markAsDone(${id})`);
+    
+                child.appendChild(firstGrandParent);
+                child.appendChild(secondGrandParent);
+                child.appendChild(thirdGrandParent);
+                child.setAttribute("id", id);
+                return child;
+            }
+
+            // some constraints on state(here) :-
+            // State will always be an array
+            // Every element of state would have a title, description and id
+
+            function updateDomAccToState(state) {
+                const parent = document.getElementById("container");
+                parent.innerHTML = ""; //  clear :- not a better approach , see todo3
+                for(let i=0; i<state.length; i++) {
+                    const child = createChild(state[i].title, state[i].description, state[i].id);
+                    parent.appendChild(child);
+                }
+            }
+            updateDomAccToState([
+                {   title: "deepak",
+                    description: "singh",
+                    id : 1
+                },
+                {
+                    title: "deepesh",
+                    description: "singh",
+                    id : 2
+                }
+            ]);
+
+            // When we get data from backend, then we would have to write
+            // like below:- 
+            // window.setInterval(async function() {
+            //     const res = await fetch("https://sum-server.100xdevs.cpm/todos");
+            //     const json = await res.json();
+            //     updateDomAccToState(json.todos);
+            // });
+
+        </script>
+    </body>
+</html>

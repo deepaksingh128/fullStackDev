@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="throttleCall()">Call me</button>
+    <p id="call"></p>
+
+    <script>
+        // throttling is an application of closers :-
+        function throttleCallFunc(call, limit) {
+            let flag = true;
+
+            return function () {
+                if (flag) {
+                    call();
+                    flag = false;
+                    setTimeout(() => {
+                        flag = true;
+                    }, limit);
+                }
+            }
+        }
+
+        const throttleCall = throttleCallFunc(call, 1000);
+
+        function call() {
+            // we may have api calls / async func
+            const element = document.createElement("p");
+            element.innerHTML = "You clicked me !";
+
+            const parent = document.getElementById("call");
+            parent.appendChild(element);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!--
+    Note: For dynamic websites , using framework helps
+    a lot in doing DOM manipulation logic
+-->
+
+<html>
+    <script>
+        function onButtonPress() {
+            const currentValue = document.getElementById("btn").innerHTML;
+            const currentCounter = currentValue.split(" ")[1];
+            const nextCounter = parseInt(currentCounter) + 1;
+            document.getElementById("btn").innerHTML = "Counter " + nextCounter;
+        }
+    </script>
+    <body>
+        <button onclick="onButtonPress()" id="btn">Counter 0</button>
+    </body>
+</html>

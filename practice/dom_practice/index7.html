@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Changing background color of para inside div using querySelectorAll() method</p>
+
+    <p>Para outside div element will not affected </p>
+    <div style="border: 1px solid black; padding: 8px;">
+        <h2>Heading inside div one </h2>
+        <p>Para inside div one</p>
+    </div>
+    <div>
+        <h2>Heading inside div two</h2>
+        <p>Para inside div two</p>
+    </div>
+
+    <script>
+        const nodeLIst = document.querySelectorAll('div > p');
+        nodeLIst.forEach(paragraph => paragraph.style.backgroundColor = 'green');
+    </script>
+</body>
+</html>

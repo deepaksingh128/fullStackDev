@@ -1,0 +1,44 @@
+<!--
+    This file will do the same as index.html in this folder,
+    But this has longer code, actually this is the code under 
+    the hood react converts.
+    As the application grows it becomes harder to write all the
+    things in plain html/css/js (as in index.html) , but react 
+    do lots of things for us, although in this file we
+    are not using react functionalities.
+-->
+
+<html>
+    <body>
+        <div id="buttonParent">
+
+        </div>
+        <script>
+            // global state variable : initial state
+            let state = {
+                count:0
+            }
+
+            function onButtonPress() {
+                state.count++;
+                buttonComponentReRender();          // done by react library (when we use it)
+            }
+
+            // below function will be taken care by react when we use react
+            function buttonComponentReRender() {
+                document.getElementById("buttonParent").innerHTML = ""; // we can update also, no need to clear
+                const component = buttonComponent(state.count);
+                document.getElementById("buttonParent").appendChild(component);
+            }
+
+            function buttonComponent(count) {
+                const button = document.createElement("button");
+                button.innerHTML = `Counter ${count}`;
+                button.setAttribute("onclick", `onButtonPress()`);
+                return button;
+            }
+
+            buttonComponentReRender();           // it will also done by react library (when we use it)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!--
+    NOTE :- Using backend 
+    Here we are not writing any logic on frontend side ,
+    instead we are going to call to a backend 
+    to get the sum
+-->
+
+<!--
+    Apply debouncing :- using onclick and then no need to calculate button
+-->
+
+<html>
+    <script>
+        // debouncing logic :- Not recommended this way , because global variable declaration
+            let timeout;
+            function debounceCalculateSum() {
+                // delay the call to calculateSum untill i have been called for 100ms
+
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    calculateSum()
+                }, 100);
+            }
+
+        // async based syntax :- do the same job as above function
+        
+            async function calculateSum() {
+                const a = document.getElementById("firstNumber").value;
+                const b = document.getElementById("secondNumber").value;
+                
+                const response = fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b);
+                const ans = await response.text();
+                document.getElementById("finalSum").innerHTML = ans; 
+            }
+        
+    </script>
+    <body>
+        <input oninput="debounceCalculateSum()" id="firstNumber" type="text" placeholder="First Number"> <br></br>
+        <input oninput="debounceCalculateSum( )" id="secondNumber" type="text" placeholder="Second Number"> <br></br>
+        <button onclick="calculateSum()">Calculate Sum</button> <br></br>
+        <div id="finalSum"></div>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Using innerHtml to change the content of the web page-->
+    
+    <label for="nameInput">Enter the name : </label>
+    <input type="text" id="nameInput"> <br>
+    <button onclick="displayGreeting()">Submit</button>
+    <p id="greetingMessage"></p>
+
+    <script>
+        function displayGreeting() {
+            const enteredName = document.getElementById("nameInput").value;
+
+            document.getElementById("greetingMessage").innerHTML = "Hello " + enteredName + " !"; 
+        }
+    </script>
+</body>
+</html>

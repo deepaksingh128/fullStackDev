@@ -1,0 +1,43 @@
+<!--
+    NOTE :- Using backend 
+    Here we are not writing any logic on frontend side ,
+    instead we are going to call to a backend 
+    to get the sum
+-->
+
+<html>
+    <script>
+        // Promise based syntax :- 
+        /*
+            function calculateSum() {
+            const a = document.getElementById("firstNumber").value;
+            const b = document.getElementById("secondNumber").value;
+            fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+                .then(function(response) {
+                    return response.text();
+                }).then(function(ans) {
+                    document.getElementById("finalSum").innerHTML = ans;
+                });     
+            });
+        }
+        */
+
+        // async based syntax :- do the same job as above function
+        
+            async function calculateSum() {
+                const a = document.getElementById("firstNumber").value;
+                const b = document.getElementById("secondNumber").value;
+                
+                const response = fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b);
+                const ans = await response.text();
+                document.getElementById("finalSum").innerHTML = ans; 
+            }
+        
+    </script>
+    <body>
+        <input id="firstNumber" type="text" placeholder="First Number"> <br></br>
+        <input id="secondNumber" type="text" placeholder="Second Number"> <br></br>
+        <button onclick="calculateSum()">Calculate Sum</button> <br></br>
+        <div id="finalSum"></div>
+    </body>
+</html>

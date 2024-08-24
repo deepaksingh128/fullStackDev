@@ -1,0 +1,19 @@
+
+<html>
+
+    <script>
+        
+        function updateCount() { 
+            const currentValue = document.getElementById("btn").innerHTML.trim();
+            console.log(currentValue.split(" "));
+            const currentCounter = currentValue.split(" ")[1];
+            const newCounter = parseInt(currentCounter) + 1;
+            document.getElementById("btn").innerHTML = "Counter " + newCounter;
+        }
+    </script>
+    <body>
+        <button id="btn" onclick="updateCount()">
+            Counter 0
+        </button>
+    </body>
+</html>

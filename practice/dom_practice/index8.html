@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="frm1" action="">
+        First Name : <input type="text" name="fname" value="Donald">
+        Last Name : <input type="text" name="lname" value="Duck">
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>These are the values of each of the form elements :</p>
+    <p id="demo"></p>
+
+    <script>
+        // this below prevent deafult action of the browser and
+        // whwn we click on the submit button the form data will be 
+        // processed but will not be sent anywhere , not even to 
+        // same url we are currently working on and the page refresh will not happen
+        document.getElementById("frm1").addEventListener("submit", function (event) {
+            event.preventDefault();
+        })
+
+
+        const x = document.forms["frm1"];
+        let text = ""
+        for(let i=0; i<x.length; i++) {
+            text += x.elements[i].value + "<br>";
+        }
+
+        document.getElementById("demo").innerHTML = text;
+    </script>
+</body>
+</html>

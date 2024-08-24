@@ -1,0 +1,33 @@
+<!--
+    Here we are going to send a request to a backend server
+    with principal, time and rate as parameters and get back
+    the total amount and interest and render them.
+-->
+<!DOCTYPE html>
+<html>
+    <script>
+        async function calculateInterest() {
+            const principal = document.getElementById("principal").value;
+            const time = document.getElementById("time").value;
+            const rate = document.getElementById("rate").value;
+
+            const response = await fetch("localhost:3000/interest?principal="
+                    + principal+ "&time=" + time + "&rate=" + rate);
+
+            const total = response.total;
+            const interest = response.interest;
+
+            document.getElementById("finalValues").innerHTML = {
+                total : total,
+                interest : interest
+            }
+        }
+    </script>
+    <body>
+        <input id="principal" type="text" placeholder="Pricipal"></input>   <br></br>
+        <input id="time" type="text" placeholder="Time"></input>   <br></br>
+        <input id="rate" type="text" placeholder="Rate"></input>   <br></br> 
+        <button onclick="calculateInterest()">Calculate Interest</button>
+        <div id="finalValues"></div>
+    </body>
+</html>
